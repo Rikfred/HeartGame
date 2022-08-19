@@ -5,6 +5,11 @@ input.onButtonPressed(Button.A, function () {
         basic.pause(200)
     }
 })
+input.onGesture(Gesture.Shake, function () {
+    if (liv > 0) {
+        liv += -1
+    }
+})
 let liv = 0
 liv = 4
 basic.forever(function () {
