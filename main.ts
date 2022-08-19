@@ -5,9 +5,15 @@ input.onButtonPressed(Button.A, function () {
         basic.pause(200)
     }
 })
+input.onSound(DetectedSound.Loud, function () {
+    liv = 4
+})
 input.onGesture(Gesture.Shake, function () {
     if (liv > 0) {
         liv += -1
+    }
+    if (liv <= 0) {
+        basic.showIcon(IconNames.Skull)
     }
 })
 let liv = 0
