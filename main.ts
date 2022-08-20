@@ -5,19 +5,22 @@ input.onButtonPressed(Button.A, function () {
         basic.pause(200)
     }
 })
-input.onSound(DetectedSound.Loud, function () {
-    liv = 4
-})
-input.onGesture(Gesture.Shake, function () {
+input.onGesture(Gesture.FreeFall, function () {
     if (liv > 0) {
         liv += -1
     }
     if (liv <= 0) {
         basic.showIcon(IconNames.Skull)
+    } else {
+        basic.showIcon(IconNames.No)
     }
 })
+input.onSound(DetectedSound.Loud, function () {
+    liv = 4
+})
 let liv = 0
-liv = 4
+liv = 3
+let paus = 1
 basic.forever(function () {
 	
 })
