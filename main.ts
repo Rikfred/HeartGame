@@ -45,12 +45,7 @@ while (paus == 1) {
         }
     }
 }
-basic.forever(function () {
-    if (input.acceleration(Dimension.Y) > 185) {
-        hit += 1
-    }
-})
-loops.everyInterval(200, function () {
+loops.everyInterval(500, function () {
     senastTid = control.millis() - timeStamp
     if (begin == 1) {
         if (senastTid > 5000) {
@@ -67,6 +62,14 @@ loops.everyInterval(200, function () {
             basic.pause(2000)
             basic.showNumber(hit)
         } else {
+        	
+        }
+    }
+})
+basic.forever(function () {
+    if (begin == 1) {
+        if (input.acceleration(Dimension.Y) > 185) {
+            hit += 1
             timeStamp = control.millis()
         }
     }
