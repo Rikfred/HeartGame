@@ -51,3 +51,6 @@ while (paus == 1) {
 basic.forever(function () {
 	
 })
+loops.everyInterval(5000, function () {
+	
+})
