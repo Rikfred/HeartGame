@@ -11,6 +11,7 @@ input.onButtonPressed(Button.A, function () {
         basic.showIcon(IconNames.SmallDiamond)
         hit = 0
         timeStamp = control.millis()
+        begin = 1
     }
 })
 input.onButtonPressed(Button.B, function () {
@@ -29,6 +30,7 @@ input.onGesture(Gesture.Shake, function () {
 	
 })
 let senastTid = 0
+let begin = 0
 let timeStamp = 0
 let hit = 0
 let paus = 0
@@ -50,9 +52,10 @@ basic.forever(function () {
 })
 loops.everyInterval(200, function () {
     senastTid = control.millis() - timeStamp
-    if (paus == 0) {
+    if (begin == 1) {
         if (senastTid > 5000) {
             paus = 1
+            begin = 0
             if (liv > 0) {
                 liv += -1
             }
