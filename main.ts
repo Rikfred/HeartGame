@@ -9,6 +9,8 @@ input.onButtonPressed(Button.A, function () {
         }
         basic.pause(1000)
         basic.showIcon(IconNames.SmallDiamond)
+        hit = 0
+        timeStamp = control.millis()
     }
 })
 input.onButtonPressed(Button.B, function () {
@@ -24,18 +26,11 @@ input.onButtonPressed(Button.B, function () {
     }
 })
 input.onGesture(Gesture.Shake, function () {
-    if (paus == 0) {
-        paus = 1
-        if (liv > 0) {
-            liv += -1
-        }
-        if (liv == 0) {
-            basic.showIcon(IconNames.Skull)
-        } else {
-            basic.showIcon(IconNames.No)
-        }
-    }
+	
 })
+let senastTid = 0
+let timeStamp = 0
+let hit = 0
 let paus = 0
 let liv = 0
 liv = 3
@@ -49,8 +44,27 @@ while (paus == 1) {
     }
 }
 basic.forever(function () {
-	
+    if (input.acceleration(Dimension.Y) > 185) {
+        hit += 1
+    }
 })
-loops.everyInterval(5000, function () {
-	
+loops.everyInterval(200, function () {
+    senastTid = control.millis() - timeStamp
+    if (paus == 0) {
+        if (senastTid > 5000) {
+            paus = 1
+            if (liv > 0) {
+                liv += -1
+            }
+            if (liv == 0) {
+                basic.showIcon(IconNames.Skull)
+            } else {
+                basic.showIcon(IconNames.No)
+            }
+            basic.pause(2000)
+            basic.showNumber(hit)
+        } else {
+            timeStamp = control.millis()
+        }
+    }
 })
