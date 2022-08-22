@@ -10,7 +10,6 @@ input.onButtonPressed(Button.A, function () {
         basic.pause(1000)
         basic.showIcon(IconNames.SmallDiamond)
         hit = 0
-        max = 0
         timeStamp = control.millis()
         begin = 1
     }
@@ -18,6 +17,7 @@ input.onButtonPressed(Button.A, function () {
 input.onButtonPressed(Button.B, function () {
     paus = 1
     liv = 3
+    max = 0
     while (paus == 1) {
         if (paus == 1) {
             basic.showIcon(IconNames.Chessboard)
@@ -30,12 +30,13 @@ input.onButtonPressed(Button.B, function () {
 let senastTid = 0
 let begin = 0
 let timeStamp = 0
-let max = 0
 let hit = 0
+let max = 0
 let paus = 0
 let liv = 0
 liv = 3
 paus = 1
+max = 0
 while (paus == 1) {
     if (paus == 1) {
         basic.showIcon(IconNames.Chessboard)
@@ -71,15 +72,15 @@ loops.everyInterval(200, function () {
             } else {
                 basic.showIcon(IconNames.No)
             }
-            basic.pause(3000)
+            basic.pause(2000)
             basic.showNumber(hit)
+            if (hit > max) {
+                max = hit
+            }
             if (liv == 0) {
                 basic.pause(3000)
                 basic.showString("Max:")
                 basic.showNumber(max)
-            }
-            if (hit > max) {
-                max = hit
             }
         }
     }
